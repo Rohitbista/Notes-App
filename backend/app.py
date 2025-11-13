@@ -14,6 +14,10 @@ db = {}
 def root():
     return {"message":"this is a new project"}
 
+@app.get("/view_notes")
+def root():
+    return db
+
 @app.post("/add_note")
 def add_a_note(note: Notes):
     db[note.id] = note
