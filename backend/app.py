@@ -24,7 +24,14 @@ def delete_a_note(note_id: int):
     if note_id in db:
         del db[note_id]
         return "Note has been deleted"
-    raise HTTPException(status_code=404, detail="Note ID not does not exist")
+    raise HTTPException(status_code=404, detail="Note ID does not exist")
+
+@app.put("/update_a_note/{note_id}")
+def update_note(note_id: int, note: Notes):
+    if note_id in db:
+        db[note_id] = note
+        return "Note has been updated"
+    raise HTTPException(status_code=404, detail="Note ID does not exist")
 
 
 
