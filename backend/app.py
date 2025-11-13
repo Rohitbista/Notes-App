@@ -15,7 +15,7 @@ def root():
     return {"message":"this is a new project"}
 
 @app.get("/view_notes")
-def root():
+def see_all_notes():
     return db
 
 @app.post("/add_note")
