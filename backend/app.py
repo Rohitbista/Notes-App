@@ -16,9 +16,7 @@ def root():
 
 @app.post("/add_note")
 def add_a_note(note: Notes):
-    db["id"] = note.id
-    db["topic"] = note.topic
-    db["content"] = note.content
+    db[note.id] = note
     return {"message":"successfully entered the note in the db"}
 
 @app.delete("/delete_by_ID/{note_id}")
