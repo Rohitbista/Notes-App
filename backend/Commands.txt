@@ -1,0 +1,71 @@
+C:\Users\User>cd C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend
+
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000
+{"message":"this is a new project"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000/view_notes
+{"message":"The database is empty"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":1, \"topic\":\"Tiger\", \"content\":\"Tiger is part of the big cat family and is the biggest cat weighing up to 600 to 800 pounds. They are much bigger than Lion.\"}"
+{"message":"successfully entered the note in the db"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":2, \"topic\":\"Lion\", \"content\":\"Lion is also part of the big cat family and is the  second biggest cat weighing up to 500 to 600 pounds. They look big cause of their magistic mane.\"}"
+{"message":"successfully entered the note in the db"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000/view_notes
+{"1":{"id":1,"topic":"Tiger","content":"Tiger is part of the big cat family and is the biggest cat weighing up to 600 to 800 pounds. They are much bigger than Lion."},"2":{"id":2,"topic":"Lion","content":"Lion is also part of the big cat family and is the  second biggest cat weighing up to 500 to 600 pounds. They look big cause of their magistic mane."}}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"message":"successfully entered the note in the db"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000/view_notes
+{"1":{"id":1,"topic":"Tiger","content":"Tiger is part of the big cat family and is the biggest cat weighing up to 600 to 800 pounds. They are much bigger than Lion."},"2":{"id":2,"topic":"Lion","content":"Lion is also part of the big cat family and is the  second biggest cat weighing up to 500 to 600 pounds. They look big cause of their magistic mane."},"123":{"id":123,"topic":"Liger","content":"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight."}}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000/view_notes
+Internal Server Error
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000/view_notes
+{"detail":"Note App database is empty"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":2, \"topic\":\"Lion\", \"content\":\"Lion is also part of the big cat family and is the  second biggest cat weighing up to 500 to 600 pounds. They look big cause of their magistic mane.\"}"
+Internal Server Error
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_a_note -d "{\"id\":1, \"topic\":\"Tiger\", \"content\":\"Tiger is part of the big cat family and is the biggest cat weighing up to 600 to 800 pounds. They are much bigger than Lion.\"}"
+{"detail":"Not Found"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":1, \"topic\":\"Tiger\", \"content\":\"Tiger is part of the big cat family and is the biggest cat weighing up to 600 to 800 pounds. They are much bigger than Lion.\"}"
+Internal Server Error
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":1, \"topic\":\"Tiger\", \"content\":\"Tiger is part of the big cat family and is the biggest cat weighing up to 600 to 800 pounds. They are much bigger than Lion.\"}"
+Internal Server Error
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":1, \"topic\":\"Tiger\", \"content\":\"Tiger is part of the big cat family and is the biggest cat weighing up to 600 to 800 pounds. They are much bigger than Lion.\"}"
+Internal Server Error
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":2, \"topic\":\"Lion\", \"content\":\"Lion is also part of the big cat family and is the  second biggest cat weighing up to 500 to 600 pounds. They look big cause of their magistic mane.\"}"
+[{"id":2}]
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+[{"id":123}]
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000/see_all_notes
+{"detail":"Not Found"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000/view_notes
+[{"id":1,"topic":"Tiger","content":"Tiger is part of the big cat family and is the biggest cat weighing up to 600 to 800 pounds. They are much bigger than Lion."},{"id":2,"topic":"Lion","content":"Lion is also part of the big cat family and is the  second biggest cat weighing up to 500 to 600 pounds. They look big cause of their magistic mane."},{"id":123,"topic":"Liger","content":"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight."}]
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X GET -H "Content-Type:application/json" http://127.0.0.1:8000/delete_by_ID/123
+{"detail":"Method Not Allowed"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X DELETE -H "Content-Type:application/json" http://127.0.0.1:8000/delete_by_ID/123
+{"message":"Note with Note ID 123 has been successfully deleted"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"detail":"Note id already exists"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+Internal Server Error
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"detail":"Note id already exists"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"detail":"Note id already exists"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"detail":"Note id already exists"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"data":[{"id":123}],"count":null}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":1, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"detail":"Note id already exists"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"detail":"Note id already exists"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"detail":"Note id already exists"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":123, \"topic\":\"Liger\", \"content\":\"Liger is a mix breed of Lion and tiger. I think they are much bigger then either or lean more towards the Tiger side when it comes to wight.\"}"
+{"detail":"Note id already exists"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X DELETE -H "Content-Type:application/json" http://127.0.0.1:8000/delete_by_ID/2
+{"message":"Note with Note ID 2 has been successfully deleted"}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X POST -H "Content-Type:application/json" http://127.0.0.1:8000/add_note -d "{\"id\":2, \"topic\":\"Lion\", \"content\":\"Lion is also part of the big cat family and is the  second biggest cat weighing up to 500 to 600 pounds. They look big cause of their magistic mane.\"}"
+{"id":2,"topic":"Lion","content":"Lion is also part of the big cat family and is the  second biggest cat weighing up to 500 to 600 pounds. They look big cause of their magistic mane."}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X PUT -H "Content-Type:application/json" http://127.0.0.1:8000/update_a_note/1
+{"detail":[{"type":"missing","loc":["body"],"msg":"Field required","input":null}]}
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>curl -X PUT -H "Content-Type:application/json" http://127.0.0.1:8000/update_a_note/1 -d "{\"id\":1, \"topic\":\"Tiger\", \"content\":\"Tiger is a good animal for itself atleast.\"}"
+[{"id":1,"topic":"Tiger","content":"Tiger is a good animal for itself atleast."}]
+C:\Users\User\Desktop\Python FastAPI\FASTAPI-TUTORIAL-SUPABASE\backend>
