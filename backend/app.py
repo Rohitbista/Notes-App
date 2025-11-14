@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from models.note import Notes
+from db import save_to_db, delete_from_db, update_in_db, print_from_db, get_one_from_db
 
 app = FastAPI()
 
@@ -18,7 +19,8 @@ def see_all_notes():
 @app.post("/add_note")
 def add_a_note(note: Notes):
     if get_one_from_db(note.id):
-        raise HTTPException(status_code=404, detail="Note id already exists")
+        print(get_one_from_db(note.id))
+        raise HTTPException(status_code=404, detail="Note ID already exists")
     save_to_db(note)
     return get_one_from_db(note.id)
 

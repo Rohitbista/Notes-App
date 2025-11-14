@@ -11,6 +11,7 @@ supabase_key = os.getenv("SUPABASE_KEY")
 supabase = create_client(supabase_url, supabase_key)
 
 def save_to_db(note: Notes):
+    print(note.id, "    ", note.topic, "    ", note.content)
     response = supabase.table("notes_app_database").insert({"id":note.id, "topic":note.topic, "content":note.content}).execute()
     return response
 
@@ -27,10 +28,10 @@ def print_from_db():
     return response.data
 
 def get_one_from_db(note_id:int):
-    response = supabase.table("notes_app_supabase").select("id").eq("id", note_id).execute()
+    response = supabase.table("notes_app_database").select("*").eq("id", note_id).execute()
     if response.data:
-        return response.data
-    return response.data
+        return response.data[0]
+    return None
 
 
 
