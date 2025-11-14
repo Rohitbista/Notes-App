@@ -4,8 +4,6 @@ from db import save_to_db, delete_from_db, update_in_db, print_from_db, get_one_
 
 app = FastAPI()
 
-db = {}
-
 @app.get("/")
 def root():
     return {"message":"this is a new project"}
