@@ -16,7 +16,9 @@ def root():
 
 @app.get("/view_notes")
 def see_all_notes():
-    return db
+    if len(db)>0:
+        return db
+    return {"message":"The database is empty"}
 
 @app.post("/add_note")
 def add_a_note(note: Notes):
@@ -36,6 +38,7 @@ def update_note(note_id: int, note: Notes):
         db[note_id] = note
         return "Note has been updated"
     raise HTTPException(status_code=404, detail="Note ID does not exist")
+
 
 
 
