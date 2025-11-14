@@ -1,12 +1,7 @@
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from models.note import Notes
 
 app = FastAPI()
-
-class Notes(BaseModel):
-    id: int
-    topic: str
-    content: str
 
 db = {}
 
@@ -16,27 +11,28 @@ def root():
 
 @app.get("/view_notes")
 def see_all_notes():
-    if len(db)>0:
-        return db
-    return {"message":"The database is empty"}
+    if print_from_db():
+        return print_from_db()
+    raise HTTPException(status_code=404, detail="Note App database is empty")
 
 @app.post("/add_note")
 def add_a_note(note: Notes):
-    db[note.id] = note
-    return {"message":"successfully entered the note in the db"}
+    if get_one_from_db(note.id):
+        raise HTTPException(status_code=404, detail="Note id already exists")
+    save_to_db(note)
+    return get_one_from_db(note.id)
 
 @app.delete("/delete_by_ID/{note_id}")
 def delete_a_note(note_id: int):
-    if note_id in db:
-        del db[note_id]
-        return "Note has been deleted"
+    if get_one_from_db(note_id):
+        delete_from_db(note_id)
+        return {"message":f"Note with Note ID {note_id} has been successfully deleted"}
     raise HTTPException(status_code=404, detail="Note ID does not exist")
 
 @app.put("/update_a_note/{note_id}")
 def update_note(note_id: int, note: Notes):
-    if note_id in db:
-        db[note_id] = note
-        return "Note has been updated"
+    if get_one_from_db(note_id):
+        return update_in_db(note_id, note).data
     raise HTTPException(status_code=404, detail="Note ID does not exist")
 
 
