@@ -13,7 +13,7 @@ supabase = create_client(supabase_url, supabase_key)
 def save_to_db(note: Notes):
     print(note.id, "    ", note.topic, "    ", note.content)
     response = supabase.table("notes_app_database").insert({"id":note.id, "topic":note.topic, "content":note.content}).execute()
-    return response
+    return response.data[0] if response.data else None
 
 def delete_from_db(note_id: int):
     response = supabase.table("notes_app_database").delete().eq("id", note_id).execute()

@@ -4,6 +4,8 @@ from db.db import save_to_db, delete_from_db, update_in_db, print_from_db, get_o
 
 from fastapi.middleware.cors import CORSMiddleware
 
+import uvicorn
+
 app = FastAPI()
 
 app.add_middleware(
@@ -45,6 +47,9 @@ def update_note(note_id: int, note: Notes):
         return update_in_db(note_id, note).data
     raise HTTPException(status_code=404, detail="Note ID does not exist")
 
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="0.0.0.0", port=9000, reloads=True)
 
 
 
