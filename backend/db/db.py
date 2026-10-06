@@ -1,12 +1,9 @@
-import os
 from supabase import create_client
-from dotenv import load_dotenv
 from models.note import Notes
+from config.settings import SUPABASE_KEY, SUPABASE_URL
 
-load_dotenv()
-
-supabase_url = os.getenv("SUPABASE_URL")
-supabase_key = os.getenv("SUPABASE_KEY")
+supabase_key = SUPABASE_KEY
+supabase_url = SUPABASE_URL
 
 supabase = create_client(supabase_url, supabase_key)
 
