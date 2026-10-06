@@ -1,2 +1,5 @@
 **/.env
 backend/Commands.txt
+
+__pycache__/
+*.pyc
