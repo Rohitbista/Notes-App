@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from models.note import Notes
 from db.db import save_to_db, delete_from_db, update_in_db, print_from_db, get_one_from_db
+from config.settings import ALLOWED_ORIGIN
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -8,7 +9,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[ALLOWED_ORIGIN],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
